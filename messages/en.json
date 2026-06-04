@@ -1,5 +1,12 @@
 {
   "HomePage": {
-    "title": "Workspace"
+    "hero": {
+      "title":"Explore the connected Cameroon",
+      "description":"A search engine for connected devices in Cameroon",
+      "get-started": "Get started"
+    },
+    "terms": {
+
+    }
   }
 }

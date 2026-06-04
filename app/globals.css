@@ -128,6 +128,6 @@
     @apply font-sans;
   }
   h1 {
-    @apply text-3xl font-bold uppercase;
+    @apply text-2xl font-bold uppercase;
   }
 }

@@ -175,10 +175,9 @@ export function LoginForm({
                   type="submit"
                   disabled={loading}
                   className="w-full"
+                  loading={loading}
                 >
-                  {loading
-                    ? "Signing in..."
-                    : "Login"}
+                  Login
                 </Button>
               </Field>
 

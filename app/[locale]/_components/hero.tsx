@@ -22,9 +22,8 @@ export default function Hero() {
             {t("hero.title")}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Discover assets, monitor threats, analyze vulnerabilities,
-            and protect critical infrastructure from a single platform.
+          <p className="mx-auto mt-6 max-w-2xl text-lg max-w-sm text-muted-foreground md:text-xl">
+            {t("hero.description")}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

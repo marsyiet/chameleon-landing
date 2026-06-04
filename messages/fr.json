@@ -1,7 +1,8 @@
 {
   "HomePage": {
     "hero": {
-      "title":"Landing page",
+      "title":"Explorez le Cameroun connecté",
+      "description":"Un moteur de recherche des équipements connectés au Cameroun",
       "get-started": "Get started"
     },
     "terms": {

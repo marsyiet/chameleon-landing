@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Recursive } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -13,7 +13,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-const inter = Recursive({
+const inter = Roboto({
   subsets: ["latin"],
   variable: "--font-sans",
 });
