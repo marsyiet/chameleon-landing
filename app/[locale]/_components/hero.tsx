@@ -18,7 +18,7 @@ export default function Hero() {
             <span>Cyber Threat Intelligence Platform</span>
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+          <h1>
             {t("hero.title")}
           </h1>
 
