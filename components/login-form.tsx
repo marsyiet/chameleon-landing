@@ -196,7 +196,7 @@ export function LoginForm({
 
           <div className="relative hidden bg-muted md:block">
             <img
-              src="/login-image.jpg"
+              src="/globe.svg"
               alt="Chameleon"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.3]"
             />

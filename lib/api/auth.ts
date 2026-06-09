@@ -6,7 +6,7 @@ import type { LoginDto } from "@/types/auth"
 export const authApi = {
   login: async (payload: LoginDto) => {
     const { data } = await api.post(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
       payload
     )
 

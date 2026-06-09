@@ -14,8 +14,7 @@ export function ThemeToggle() {
     <Toggle
       pressed={isDark}
       onPressedChange={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Toggle theme"
-      size="sm"
+      aria-label="Toggle theme"      
       variant="outline"
     >
       {isDark ? (

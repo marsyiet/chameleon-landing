@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Menu } from "lucide-react"
+import { ArrowUpRight, Menu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -13,8 +13,10 @@ import {
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageToggle } from "./language-toggle"
 import { AppNavigationMenu } from "./navigation"
+import { useTranslations } from "next-intl"
 
 export default function Navbar() {
+  const t = useTranslations("HomePage")
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -24,26 +26,33 @@ export default function Navbar() {
           className="flex items-center gap-3"
         >
           <img
-            src="/logo.svg"
+            src="/globe.svg"
             alt="Chameleon"
             className="h-8 w-8"
           />
 
           <span className="hidden sm:block text-lg font-semibold">
-            Chameleon
+            Cameleon
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:block">
-          <AppNavigationMenu />
+          {/* <AppNavigationMenu />*/}
         </div>
 
         {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
-          <Button size="sm">Get Started</Button>
+          <Button
+              asChild
+            >
+              <Link href="/sign-in">
+                {t("hero.get-started")}
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Button>
         </div>
 
         {/* Mobile */}
@@ -61,35 +70,7 @@ export default function Navbar() {
             </SheetTrigger>
 
             <SheetContent side="right" className="p-4">
-              <div className="mt-8 flex flex-col gap-4">
-                <Link href="/platform">
-                  Platform
-                </Link>
-
-                <Link href="/threat-intelligence">
-                  Threat Intelligence
-                </Link>
-
-                <Link href="/asm">
-                  Attack Surface
-                </Link>
-
-                <Link href="/solutions">
-                  Solutions
-                </Link>
-
-                <Link href="/pricing">
-                  Pricing
-                </Link>
-
-                <Link href="/docs">
-                  Documentation
-                </Link>
-
-                <div className="mt-4 border-t pt-4">
-                  <LanguageToggle />
-                </div>
-              </div>
+              Menu
             </SheetContent>
           </Sheet>
         </div>
