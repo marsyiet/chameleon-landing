@@ -1,50 +1,71 @@
 "use client"
-
 import Link from "next/link"
 import { ArrowRight, Shield, Radar, SearchIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import HeroInput from "./hero-input"
+
+const partnerLogos = [
+  {
+    name: "ENSPY",
+    src: "/logos/polytech.png",
+    href: "https://polytechnique.cm",
+  },
+  {
+    name: "ANTIC",
+    src: "/logos/antic.jpg",
+    href: "https://www.antic.cm",
+  },
+]
 
 export default function Hero() {
   const t = useTranslations("HomePage")
-
   return (
-    <section className="relative overflow-hidden flex itemms-center justify-center">
-      <div className="container mx-auto mt-20">
-        <div className="mx-auto max-w-4xl text-center ">
-          <h1>
-            {t("hero.title")}
-          </h1>
+    <section className="h-dvh">
+      <div
+        className="relative h-full flex justify-center"
+        style={{
+          backgroundImage: "url('/images/hero.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Overlay pour lisibilité du texte */}
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-xs" />
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg max-w-sm text-muted-foreground md:text-xl">
-            {t("hero.description")}
-          </p>
-
-          <Input type="text" placeholder="Rechercher des domaines, adresses, services..." 
-          className="min-h-16 text-xl! mt-12 max-w-xl bg-accent"/>
-
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              className="text-lg px-8! px-4!"
-            >
-              <p>Rechercher</p>
-              <span><SearchIcon /></span>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="text-lg px-8! px-4!"
-            >
-              <Link href="/#">
-                Learn More
-              </Link>
-            </Button>
+        <div className="relative container mx-auto mt-25">
+          <div className="flex items-center justify-center text-center p-5 flex-col gap-10 mx-auto max-w-4xl">
+            <h1 className="valenzka max-w-4xl">
+              {t("hero.title")}
+            </h1>
+            <h5 className="max-w-lg">
+              {t("hero.description")}
+            </h5>
+            <HeroInput />
           </div>
+        </div>
+      </div>
+
+      <div className="border-t bg-card px-4 py-10">
+        <div className="mx-auto max-w-4xl flex flex-col items-center gap-5">
+          <div className="flex items-center gap-10 flex-wrap justify-center">
+            {partnerLogos.map((logo) => (
+              <a
+                key={logo.name}
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-50 hover:opacity-80 transition-opacity duration-200 grayscale hover:grayscale-0"
+              >
+                <img src={logo.src} alt={logo.name} className="h-20 object-contain" />
+              </a>
+            ))}
+          </div>
+          <p className="text-center text-sm text-muted-foreground max-w-lg leading-relaxed">
+            Ce travail est réalisé dans le cadre d'un mémoire de fin d'études en cybersécurité.
+            Il constitue un projet académique à visée démonstrative et ne représente pas un produit commercial.
+          </p>
         </div>
       </div>
     </section>

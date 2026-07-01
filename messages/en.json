@@ -1,12 +1,12 @@
 {
   "HomePage": {
     "hero": {
-      "title":"Explore the connected Cameroon",
-      "description":"A search engine for connected devices in Cameroon",
-      "get-started": "Get started"
+      "title": "A complete view of your digital presence",
+      "description": "Identify your connected assets, analyze your digital footprint, and strengthen your security.",
+      "get-started": "Get Started",
+      "inputPlaceholder": "Search for a domain, IP address, or hostname",
+      "inputButton": "Explore"
     },
-    "terms": {
-
-    }
+    "terms": {}
   }
 }

@@ -87,7 +87,7 @@ export function LoginForm({
       {...props}
     >
       <Card className="overflow-hidden p-0">
-        <CardContent className="grid p-0 md:grid-cols-2">
+        <CardContent className="grid p-0">
           <form
             onSubmit={form.handleSubmit(
               onSubmit
@@ -96,9 +96,9 @@ export function LoginForm({
           >
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h1 className="text-2xl font-bold">
+                <h3 className="valenzka">
                   Welcome back
-                </h1>
+                </h3>
 
                 <p className="text-balance text-muted-foreground">
                   Sign in to access
@@ -193,14 +193,6 @@ export function LoginForm({
               </FieldDescription>
             </FieldGroup>
           </form>
-
-          <div className="relative hidden bg-muted md:block">
-            <img
-              src="/globe.svg"
-              alt="Chameleon"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.3]"
-            />
-          </div>
         </CardContent>
       </Card>
 
