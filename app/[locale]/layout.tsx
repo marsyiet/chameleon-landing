@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -13,7 +13,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-const manrope = Manrope({
+const manrope = Nunito_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
