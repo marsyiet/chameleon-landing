@@ -47,7 +47,7 @@ export default function SignUp() {
 
         {/* Baseline bas */}
         <div className="relative">
-          <h2 className="valenzka text-white text-4xl leading-tight">
+          <h2 className="text-white text-4xl leading-tight">
             Rejoignez la plateforme<br />EASM.
           </h2>
           <p className="mt-3 text-white/60 text-sm leading-relaxed max-w-sm">

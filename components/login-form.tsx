@@ -96,7 +96,7 @@ export function LoginForm({
           >
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h3 className="valenzka">
+                <h3>
                   Welcome back
                 </h3>
 

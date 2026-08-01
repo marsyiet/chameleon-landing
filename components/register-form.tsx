@@ -20,7 +20,7 @@ export function SignUpForm({
           <form className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h3 className="valenzka">Create an account</h3>
+                <h3>Create an account</h3>
                 <p className="text-balance text-muted-foreground">
                   Enter your information to get started
                 </p>
