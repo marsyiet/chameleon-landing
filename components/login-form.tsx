@@ -7,6 +7,7 @@ import { useState } from "react"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 
@@ -26,52 +27,41 @@ import { authApi } from "@/lib/api"
 
 const loginSchema = z.object({
   email: z.email("Invalid email address"),
-  password: z
-    .string()
-    .min(1, "Password is required"),
+  password: z.string().min(1, "Password is required"),
 })
 
-type LoginFormValues = z.infer<
-  typeof loginSchema
->
+type LoginFormValues = z.infer<typeof loginSchema>
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const t = useTranslations("Auth.login")
+  const tLegal = useTranslations("Auth.legal")
   const router = useRouter()
 
-  const [loading, setLoading] =
-    useState(false)
+  const [loading, setLoading] = useState(false)
+  const [serverError, setServerError] = useState("")
 
-  const [serverError, setServerError] =
-    useState("")
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
 
-  const form =
-    useForm<LoginFormValues>({
-      resolver:
-        zodResolver(loginSchema),
-
-      defaultValues: {
-        email: "",
-        password: "",
-      },
-    })
-
-  const onSubmit = async (
-    values: LoginFormValues
-  ) => {
+  const onSubmit = async (values: LoginFormValues) => {
     try {
       setLoading(true)
       setServerError("")
 
       await authApi.login(values)
 
-      router.push("http://localhost:3005")
+      router.push("http://localhost:3005/dashboard")
     } catch (error: any) {
       setServerError(
-        error?.response?.data?.message ??
-          "Unable to login"
+        error?.response?.data?.message ?? t("genericError")
       )
     } finally {
       setLoading(false)
@@ -79,30 +69,18 @@ export function LoginForm({
   }
 
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-6",
-        className
-      )}
-      {...props}
-    >
+    <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0">
           <form
-            onSubmit={form.handleSubmit(
-              onSubmit
-            )}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="p-6 md:p-8"
           >
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h3>
-                  Welcome back
-                </h3>
-
+                <h3>{t("title")}</h3>
                 <p className="text-balance text-muted-foreground">
-                  Sign in to access
-                  Chameleon
+                  {t("subtitle")}
                 </p>
               </div>
 
@@ -113,26 +91,18 @@ export function LoginForm({
               )}
 
               <Field>
-                <FieldLabel htmlFor="email">
-                  Email
-                </FieldLabel>
+                <FieldLabel htmlFor="email">{t("emailLabel")}</FieldLabel>
 
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@company.com"
-                  {...form.register(
-                    "email"
-                  )}
+                  placeholder={t("emailPlaceholder")}
+                  {...form.register("email")}
                 />
 
-                {form.formState.errors
-                  .email && (
+                {form.formState.errors.email && (
                   <p className="text-sm text-destructive">
-                    {
-                      form.formState.errors
-                        .email.message
-                    }
+                    {form.formState.errors.email.message}
                   </p>
                 )}
               </Field>
@@ -140,32 +110,26 @@ export function LoginForm({
               <Field>
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">
-                    Password
+                    {t("passwordLabel")}
                   </FieldLabel>
 
                   <Link
                     href="/forgot-password"
                     className="ml-auto text-sm underline-offset-2 hover:underline"
                   >
-                    Forgot password?
+                    {t("forgotPassword")}
                   </Link>
                 </div>
 
                 <Input
                   id="password"
                   type="password"
-                  {...form.register(
-                    "password"
-                  )}
+                  {...form.register("password")}
                 />
 
-                {form.formState.errors
-                  .password && (
+                {form.formState.errors.password && (
                   <p className="text-sm text-destructive">
-                    {
-                      form.formState.errors
-                        .password.message
-                    }
+                    {form.formState.errors.password.message}
                   </p>
                 )}
               </Field>
@@ -177,18 +141,14 @@ export function LoginForm({
                   className="w-full"
                   loading={loading}
                 >
-                  Login
+                  {t("submit")}
                 </Button>
               </Field>
 
               <FieldDescription className="text-center">
-                Don't have an
-                account?{" "}
-                <Link
-                  href="/sign-up"
-                  className="font-medium underline"
-                >
-                  Sign up
+                {t("noAccount")}{" "}
+                <Link href="/sign-up" className="font-medium underline">
+                  {t("signUpLink")}
                 </Link>
               </FieldDescription>
             </FieldGroup>
@@ -197,16 +157,9 @@ export function LoginForm({
       </Card>
 
       <FieldDescription className="px-6 text-center">
-        By continuing you agree to
-        our{" "}
-        <Link href="/terms">
-          Terms of Service
-        </Link>{" "}
-        and{" "}
-        <Link href="/privacy">
-          Privacy Policy
-        </Link>
-        .
+        {tLegal("agreePrefix")}{" "}
+        <Link href="/terms">{tLegal("terms")}</Link> {tLegal("and")}{" "}
+        <Link href="/privacy">{tLegal("privacy")}</Link>.
       </FieldDescription>
     </div>
   )

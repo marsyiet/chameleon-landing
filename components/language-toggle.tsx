@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, Languages } from "lucide-react"
+import { Check, ChevronDown } from "lucide-react"
 import { useLocale } from "next-intl"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -16,10 +16,12 @@ const languages = [
   {
     code: "en",
     label: "English",
+    flag: "🇬🇧",
   },
   {
     code: "fr",
     label: "Français",
+    flag: "🇫🇷",
   },
 ]
 
@@ -40,14 +42,15 @@ export function LanguageToggle() {
     router.push(segments.join("/"))
   }
 
+  const current = languages.find((lang) => lang.code === locale)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-        >
-          <Languages className="h-4 w-4" />
+        <Button variant="outline" size="sm" className="gap-2">
+          <span className="text-base leading-none">{current?.flag}</span>
+          <span className="text-sm font-medium">{current?.label}</span>
+          <ChevronDown className="h-3.5 w-3.5 opacity-60" />
         </Button>
       </DropdownMenuTrigger>
 
@@ -57,8 +60,9 @@ export function LanguageToggle() {
             key={language.code}
             onClick={() => changeLanguage(language.code)}
           >
-            <span className="flex flex-1 items-center justify-between">
-              {language.label}
+            <span className="flex flex-1 items-center gap-2">
+              <span className="text-base leading-none">{language.flag}</span>
+              <span className="flex-1">{language.label}</span>
 
               {locale === language.code && (
                 <Check className="h-4 w-4" />

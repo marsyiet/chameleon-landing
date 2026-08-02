@@ -13,6 +13,15 @@ export const authApi = {
     return data
   },
 
+  register: async (payload: LoginDto) => {
+    const { data } = await api.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
+      payload
+    )
+
+    return data
+  },
+
   logout: async () => {
     const { data } = await api.post(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/logout`

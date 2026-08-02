@@ -1,14 +1,53 @@
 {
   "HomePage": {
     "hero": {
-      "title":"Explorez le Cameroun connecté",
-      "description":"Identifiez les actifs connectés, analysez les relations et renforcez votre sécurité.",
+      "title": "Explorez le Cameroun connecté",
+      "description": "Identifiez les actifs connectés, analysez les relations et renforcez votre sécurité.",
       "get-started": "Commencer",
       "inputPlaceholder": "Rechercher un domaine, une IP ou un nom d'hôte",
-      "inputButton": "Explorez"
+      "inputButton": "Explorez",
+      "disclaimer": "Ce projet a été réalisé dans le cadre d'un stage académique à l'ANTIC. Il s'agit d'un travail de recherche et d'ingénierie, sans prétention commerciale."
     },
-    "terms": {
-
+    "terms": {}
+  },
+  "Auth": {
+    "login": {
+      "title": "Se connecter",
+      "subtitle": "Connectez-vous pour accéder à Chameleon",
+      "emailLabel": "Email",
+      "emailPlaceholder": "admin@entreprise.com",
+      "passwordLabel": "Mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signUpLink": "S'inscrire",
+      "genericError": "Impossible de se connecter"
+    },
+    "signup": {
+      "title": "Créer un compte",
+      "subtitle": "Entrez vos informations pour commencer",
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastNameLabel": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jean@exemple.com",
+      "passwordLabel": "Mot de passe",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "submit": "Créer le compte",
+      "alreadyHaveAccount": "Vous avez déjà un compte ?",
+      "signInLink": "Se connecter",
+      "genericError": "Impossible de créer le compte",
+      "errors": {
+        "passwordMismatch": "Les mots de passe ne correspondent pas"
+      }
+    },
+    "legal": {
+      "agreePrefix": "En continuant, vous acceptez nos",
+      "agreePrefixSignup": "En créant un compte, vous acceptez nos",
+      "terms": "Conditions d'utilisation",
+      "and": "et",
+      "privacy": "Politique de confidentialité"
     }
   }
 }

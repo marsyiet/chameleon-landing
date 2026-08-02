@@ -18,28 +18,19 @@ export default function SignIn() {
           style={{ background: "var(--gradient-primary)" }}
         />
 
-        {/* Logo */}
-        <div className="relative flex items-center gap-2.5">
-          <div
-            className="flex h-8 w-8 items-center justify-center rounded-lg"
-            style={{ background: "var(--gradient-primary)" }}
-          >
-            <img src="/globe.svg" alt="Cameleon" className="h-5 w-5 brightness-0 invert" />
-          </div>
-        </div>
+        
 
-        {/* Baseline bas */}
+        {/* Baseline bas 
         <div className="relative">
           <h2 className="text-white text-4xl leading-tight">
             Gérez votre surface<br />d'attaque externe.
           </h2>
         </div>
+        */}
       </div>
 
       {/* ── Colonne droite : formulaire ── */}
       <div className="flex flex-col items-center justify-center p-6 md:p-10 bg-background">
-        {/* Logo mobile uniquement */}
-
         <div className="w-full max-w-sm">
           <LoginForm />
         </div>

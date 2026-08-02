@@ -1,12 +1,53 @@
 {
   "HomePage": {
     "hero": {
-      "title": "Explore the Cameroun online",
-      "description": "Identify connected assets, analyze digital footprint, and strengthen security.",
-      "get-started": "Get Started",
-      "inputPlaceholder": "Search for a domain, IP address, or hostname",
-      "inputButton": "Explore"
+      "title": "Explore Cameroon's digital footprint",
+      "description": "Identify connected assets, analyze relationships and strengthen your security.",
+      "get-started": "Get started",
+      "inputPlaceholder": "Search a domain, IP or hostname",
+      "inputButton": "Explore",
+      "disclaimer": "This project was developed as part of an academic internship at ANTIC. It is a research and engineering work, not a commercial product."
     },
     "terms": {}
+  },
+  "Auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Sign in to access Chameleon",
+      "emailLabel": "Email",
+      "emailPlaceholder": "admin@company.com",
+      "passwordLabel": "Password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "genericError": "Unable to login"
+    },
+    "signup": {
+      "title": "Create an account",
+      "subtitle": "Enter your information to get started",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "John",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "Doe",
+      "emailLabel": "Email",
+      "emailPlaceholder": "john@example.com",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Confirm password",
+      "submit": "Create account",
+      "alreadyHaveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "genericError": "Unable to create account",
+      "errors": {
+        "passwordMismatch": "Passwords do not match"
+      }
+    },
+    "legal": {
+      "agreePrefix": "By continuing you agree to our",
+      "agreePrefixSignup": "By creating an account, you agree to our",
+      "terms": "Terms of Service",
+      "and": "and",
+      "privacy": "Privacy Policy"
+    }
   }
 }
