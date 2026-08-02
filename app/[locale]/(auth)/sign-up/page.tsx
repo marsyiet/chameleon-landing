@@ -50,9 +50,6 @@ export default function SignUp() {
           <h2 className="text-white text-4xl leading-tight">
             Rejoignez la plateforme<br />EASM.
           </h2>
-          <p className="mt-3 text-white/60 text-sm leading-relaxed max-w-sm">
-            Créez votre compte et commencez à cartographier votre exposition externe en quelques minutes.
-          </p>
         </div>
       </div>
 

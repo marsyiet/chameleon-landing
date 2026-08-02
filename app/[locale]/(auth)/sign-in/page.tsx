@@ -33,9 +33,6 @@ export default function SignIn() {
           <h2 className="text-white text-4xl leading-tight">
             Gérez votre surface<br />d'attaque externe.
           </h2>
-          <p className="mt-3 text-white/60 text-sm leading-relaxed max-w-sm">
-            Découverte, surveillance et analyse continues des actifs exposés de votre organisation.
-          </p>
         </div>
       </div>
 

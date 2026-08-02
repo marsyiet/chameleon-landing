@@ -1,9 +1,9 @@
 {
   "HomePage": {
     "hero": {
-      "title":"Une vue d'ensemble de votre présence numérique",
-      "description":"Identifiez vos actifs connectés, analysez votre empreinte numérique et renforcez votre sécurité.",
-      "get-started": "Essayer maintenant",
+      "title":"Explorez le Cameroun connecté",
+      "description":"Identifiez les actifs connectés, analysez les relations et renforcez votre sécurité.",
+      "get-started": "Commencer",
       "inputPlaceholder": "Rechercher un domaine, une IP ou un nom d'hôte",
       "inputButton": "Explorez"
     },

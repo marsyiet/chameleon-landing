@@ -1,254 +1,91 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import { LanguageToggle } from "@/components/language-toggle";
 
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+type NavLinkItem = {
+  title: string;
+  image: string;
+  items: Record<string, string>;
+};
 
-const navigationItems = [
+const NAVBAR_LINKS: (NavLinkItem | string)[] = [
   {
-    title: "Platform",
-    image: "/images/platform.jpg",
-    featured: {
-      title: "Unified Cybersecurity Platform",
-      description:
-        "A single platform for threat intelligence, attack surface management and cyber defense.",
-      href: "/platform",
+    title: "A propos",
+    image: "",
+    items: {
+      "0": "Stage",
+      "1": "Équipe",
     },
-    items: [
-      {
-        title: "Executive Dashboard",
-        href: "/platform/dashboard",
-        description: "Global visibility across your ecosystem.",
-      },
-      {
-        title: "Asset Inventory",
-        href: "/platform/assets",
-        description: "Track and manage digital assets.",
-      },
-      {
-        title: "Cyber Map",
-        href: "/platform/geospatial",
-        description: "Visualize threats geographically.",
-      },
-      {
-        title: "Reporting",
-        href: "/platform/reports",
-        description: "Automated intelligence reports.",
-      },
-    ],
-  },
-  {
-    title: "Threat Intelligence",
-    items: [
-      {
-        title: "IOC Intelligence",
-        href: "/threat-intelligence/iocs",
-        description: "IPs, domains, URLs and hashes.",
-      },
-      {
-        title: "Threat Actors",
-        href: "/threat-intelligence/actors",
-        description: "Track APT groups and campaigns.",
-      },
-      {
-        title: "Malware Analysis",
-        href: "/threat-intelligence/malware",
-        description: "Malware families and indicators.",
-      },
-      {
-        title: "Vulnerabilities",
-        href: "/threat-intelligence/cves",
-        description: "CVEs and exploit intelligence.",
-      },
-    ],
-  },
-  {
-    title: "Attack Surface",
-    image: "/images/asm.jpg",
-    featured: {
-      title: "Attack Surface Management",
-      description:
-        "Discover and monitor internet-facing assets continuously.",
-      href: "/asm",
-    },
-    items: [
-      {
-        title: "Asset Discovery",
-        href: "/asm/discovery",
-        description: "Internet-wide reconnaissance.",
-      },
-      {
-        title: "Exposure Monitoring",
-        href: "/asm/exposure",
-        description: "Detect exposed services.",
-      },
-      {
-        title: "Subdomains",
-        href: "/asm/subdomains",
-        description: "Discover hidden infrastructure.",
-      },
-      {
-        title: "Certificates",
-        href: "/asm/certificates",
-        description: "SSL certificate inventory.",
-      },
-    ],
   },
   {
     title: "Solutions",
-    items: [
-      {
-        title: "Government",
-        href: "/solutions/government",
-        description: "National cyber defense.",
-      },
-      {
-        title: "SOC Teams",
-        href: "/solutions/soc",
-        description: "Monitoring and threat detection.",
-      },
-      {
-        title: "CERT / CSIRT",
-        href: "/solutions/cert",
-        description: "Incident response operations.",
-      },
-      {
-        title: "Critical Infrastructure",
-        href: "/solutions/critical",
-        description: "Protect strategic sectors.",
-      },
-    ],
+    image: "",
+    items: {
+      "0": "EASM",
+      "1": "Outils",
+      "2": "Open source",
+    },
   },
-]
+  "Documentation",
+];
 
-const directLinks = [
-  {
-    title: "Pricing",
-    href: "/pricing",
-  },
-  {
-    title: "Documentation",
-    href: "/docs",
-  },
-]
+function NavbarItem({ link }: { link: NavLinkItem | string }) {
+  // Simple string entry: no dropdown, just a link
+  if (typeof link === "string") {
+    return (
+      <a
+        href="#"
+        className="relative text-sm text-foreground/80 hover:text-foreground transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-200 hover:after:w-full"
+      >
+        {link}
+      </a>
+    );
+  }
 
-export function AppNavigationMenu() {
+  const entries = Object.entries(link.items);
+
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        {navigationItems.map((section) => (
-          <NavigationMenuItem key={section.title}>
-            <NavigationMenuTrigger>
-              {section.title}
-            </NavigationMenuTrigger>
+    <div className="group relative">
+      <button
+        type="button"
+        className="relative text-sm text-foreground/80 hover:text-foreground transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-200 group-hover:after:w-full group-hover:text-foreground"
+      >
+        {link.title}
+      </button>
 
-            <NavigationMenuContent>
-              {section.featured ? (
-                <div className="grid w-[700px] grid-cols-[260px_1fr] gap-4 p-4">
-                  <Link
-                    href={section.featured.href}
-                    className="group overflow-hidden rounded-lg border"
-                  >
-                    <div className="relative h-full min-h-[220px]">
-                      <img
-                        src={section.image}
-                        alt={section.featured.title}
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h4 className="font-semibold">
-                          {section.featured.title}
-                        </h4>
-
-                        <p className="mt-1 text-sm text-muted-foreground">
-                          {section.featured.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-
-                  <ul className="grid gap-2">
-                    {section.items.map((item) => (
-                      <ListItem
-                        key={item.href}
-                        href={item.href}
-                        title={item.title}
-                      >
-                        {item.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </div>
-              ) : (
-                <ul className="grid w-[600px] grid-cols-2 gap-2 p-4">
-                  {section.items.map((item) => (
-                    <ListItem
-                      key={item.href}
-                      href={item.href}
-                      title={item.title}
-                    >
-                      {item.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              )}
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        ))}
-
-        {directLinks.map((link) => (
-          <NavigationMenuItem key={link.href}>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <Link href={link.href}>
-                {link.title}
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
-  )
+      <div className="absolute left-1/2 top-full hidden -translate-x-1/2 pt-3 group-hover:flex">
+        <div className="min-w-48 rounded-lg border bg-background p-2 shadow-lg">
+          <div className="flex flex-col">
+            {entries.map(([key, label]) => (
+              <a
+                key={key}
+                href="#"
+                className="rounded-md px-3 py-2 text-sm text-foreground/80 hover:bg-muted hover:text-foreground transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-function ListItem({
-  title,
-  children,
-  href,
-}: {
-  title: string
-  href: string
-  children: React.ReactNode
-}) {
+export default function Navbar() {
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href}
-          className="block space-y-1 rounded-md p-3 leading-none transition-colors hover:bg-accent hover:text-accent-foreground"
-        >
-          <div className="font-medium">
-            {title}
-          </div>
+    <nav className="flex items-center justify-between px-8 py-4">
+      <div>logo</div>
 
-          <p className="line-clamp-2 text-sm text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  )
+      <div className="flex items-center gap-8">
+        {NAVBAR_LINKS.map((link, i) => (
+          <NavbarItem key={typeof link === "string" ? link : link.title + i} link={link} />
+        ))}
+      </div>
+
+      <div>
+        <LanguageToggle />
+      </div>
+    </nav>
+  );
 }

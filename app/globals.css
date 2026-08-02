@@ -191,13 +191,13 @@
     @apply font-sans;
   }
   h1 {
-    @apply text-5xl md:text-7xl font-black;
+    @apply text-5xl md:text-7xl font-bold;
   }
   h2 {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl md:text-4xl font-semibold;
   }
   h3 {
-    @apply text-2xl md:text-3xl font-semibold;
+    @apply text-2xl md:text-3xl font-medium;
   }
   h4 {
     @apply text-xl md:text-2xl font-medium;
